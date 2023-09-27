@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='LCI', # 
-    version='0.1.0',    
+    version='0.0.1',    
     description='This is a package of the LCI',
     url='https://github.com/ImageLabUNS/LCI',
     author='Laboratorio de ciencia de las imagenes - UNS',
@@ -12,7 +12,6 @@ setup(
     #En el siguiente campo listen los paquetes necesarios para que funcione el paquete
     install_requires=['pandas',
                       'numpy',
-                      'plotly.express',
                       'requests',
                       'scipy',
                       ],

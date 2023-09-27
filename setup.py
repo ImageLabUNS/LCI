@@ -1,14 +1,14 @@
 from setuptools import setup
 
 setup(
-    name='planti_paquete', # 
+    name='LCI', # 
     version='0.1.0',    
-    description='describir el paquete brevemente',
-    url='https://github.com/fiaconis/Compy',
-    author='Batman, Mujer Maravilla,  Tito',
-    author_email='su_mail@gmail.com',
+    description='This is a package of the LCI',
+    url='https://github.com/ImageLabUNS/LCI',
+    author='Laboratorio de ciencia de las imagenes - UNS',
+    author_email='imaglabsuns@gmail.com',
     license='BSD 2-clause',
-    packages=['planti_paquete'],
+    packages=['LCI'],
     #En el siguiente campo listen los paquetes necesarios para que funcione el paquete
     install_requires=['pandas',
                       'numpy',

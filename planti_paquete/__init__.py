@@ -4,6 +4,7 @@ __credits__ = 'UNS - CONICET'
 
 # importen los paquetes necesarios para que las funciones funcionen
 import numpy as np
+import utils
 
 def saludar(nombre):
     print(f'Hola, {nombre}')

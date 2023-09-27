@@ -1,2 +1,2 @@
 def say_hi(name):
-  print(f'Hi, {name}'}
+  print(f'Hi, {name}')

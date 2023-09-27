@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='LCI', # 
@@ -8,12 +8,9 @@ setup(
     author='Laboratorio de ciencia de las imagenes - UNS',
     author_email='imaglabsuns@gmail.com',
     license='BSD 2-clause',
-    packages=['LCI'],
+    packages= find_packages(),#['LCI'],
     #En el siguiente campo listen los paquetes necesarios para que funcione el paquete
-    install_requires=['pandas',
-                      'numpy',
-                      'requests',
-                      'scipy',
+    install_requires=[
                       ],
 
     classifiers=[

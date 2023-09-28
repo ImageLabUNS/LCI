@@ -7,6 +7,5 @@ __credits__ = 'UNS - CONICET'
 
 
 
-def saludar(nombre):
-    print(f'Hola, {nombre}')
+
             

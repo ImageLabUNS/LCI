@@ -55,5 +55,6 @@ def erase_txt(image, blur = True):
         if blur:
             img[tl[1]:bl[1], tl[0]:tr[0]] = cv2.blur(img[tl[1]:bl[1], tl[0]:tr[0]] ,(53,53))
         else:
+            # A fix is needed because the zone that is blur is different from the black rectangle
             img[tl[1]:bl[1], tl[0]:tr[0]] = cv2.rectangle(img[tl[1]:bl[1], tl[0]:tr[0]], tl, br, (0, 0, 0), -1)
     return img

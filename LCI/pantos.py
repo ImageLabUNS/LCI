@@ -8,7 +8,7 @@ import numpy as np
 from tqdm import tqdm
 
 
-def erase_txt(img, blur = True):
+def erase_txt(image, blur = True):
     """
     Process an image by either blurring or covering text regions with black rectangles.
 
@@ -39,6 +39,7 @@ def erase_txt(img, blur = True):
         reader = Reader(['es','en'],gpu = True)
     except:
         reader = Reader(['es','en'],gpu = False)
+    img = image.copy()
     res = reader.readtext(img)
     # For each results:
     for (bbox, text, prob) in res:
@@ -54,5 +55,5 @@ def erase_txt(img, blur = True):
         if blur:
             img[tl[1]:bl[1], tl[0]:tr[0]] = cv2.blur(img[tl[1]:bl[1], tl[0]:tr[0]] ,(53,53))
         else:
-            img[tl[1]:bl[1], tl[0]:tr[0]] = cv2.rectangle(img, tl, br, (0, 0, 0), -1)
+            img[tl[1]:bl[1], tl[0]:tr[0]] = cv2.rectangle(img[tl[1]:bl[1], tl[0]:tr[0]], tl, br, (0, 0, 0), -1)
     return img

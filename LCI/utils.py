@@ -26,13 +26,12 @@ def drive_colab():
   from google.colab import drive
   drive.mount('/content/drive')
 
-def copy_file(filename, src_path, dest_path):
+def copy_file(file_path, dest_path):
     """
     Copy a file from a source path to a destination path.
 
     Args:
-        filename (str): The name of the file to be copied.
-        src_path (str): The source directory containing the file.
+        file_path (str): The path of the file to be copied.
         dest_path (str): The destination directory where the file will be copied.
 
     Raises:
@@ -44,11 +43,13 @@ def copy_file(filename, src_path, dest_path):
         None: This function does not return a value.
 
     Example:
-        copy_file("example.txt", "/source_directory/", "/destination_directory/")
+        copy_file("/source_directory/example.txt", "/destination_directory/")
     """
     try:
+        strt = file_path[::-1].find('/')
+        filename = file_path[-strt:]
         # Copy the file from src_path to dest_path
-        shutil.copy(src_path+filename, dest_path+filename)
+        shutil.copy(file_path, dest_path+filename)
         #print(f"File copied from '{src_path}' to '{dest_path}' successfully.")
     except FileNotFoundError:
         print("The source file does not exist.")

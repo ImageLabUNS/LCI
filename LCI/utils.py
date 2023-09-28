@@ -1,4 +1,5 @@
 import shutil
+import os
 
 def say_hi(name):
   print(f'Hi, {name}')
@@ -58,5 +59,56 @@ def copy_file(file_path, dest_path):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-#def move_files(file_name,src_folder,edst_folder):
+def move_file(file_path, dst_path):
+    """
+    Move a file from the source path to the destination path.
+
+    This function copies a file from the source path to the destination path using the
+    'copy_file' function and then removes the file from the source path.
+
+    Args:
+        file_path (str): The path to the file to be moved.
+        dst_path (str): The destination directory where the file will be moved.
+
+    Returns:
+        None
+
+    Example:
+        move_file("/source_directory/example.txt", "/destination_directory/")
+    """
+    copy_file(file_path,dst_path)
+    os.remove(file_path)
+
+
+
+def install_package(package_name):
+    """
+    Install a Python package if it is not already installed.
+
+    This function attempts to import the specified package. If the package is not
+    installed, it uses pip to install it. If the installation fails, it prompts
+    the user to install the package manually.
+
+    Args:
+        package_name (str): The name of the Python package to be installed.
+
+    Returns:
+        None
+
+    Example:
+        install_package("numpy")
+    """
+    import subprocess
+    import sys
+    try:
+        # Try to import the package
+        __import__(package_name)
+    except ImportError:
+        # If the package is not installed, install it using pip
+        print(f"{package_name} is not installed. Installing now...")
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
+            print(f"{package_name} has been successfully installed.")
+        except subprocess.CalledProcessError:
+            print(f"Failed to install {package_name}. Please install it manually.")
 

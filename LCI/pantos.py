@@ -35,8 +35,11 @@ def erase_txt(img, blur = True):
         utl.install_package('easyocr')
         #!pip install easyocr
         from easyocr import Reader
-
-    res = Reader.readtext(img)
+    try:
+        reader = Reader(['es','en'],gpu = True)
+    except:
+        reader = Reader(['es','en'],gpu = False)
+    res = reader.readtext(img)
     # For each results:
     for (bbox, text, prob) in res:
       # The next line display the text along with its associated probability.

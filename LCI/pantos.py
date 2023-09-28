@@ -31,7 +31,7 @@ def erase_txt(img, blur = True):
     try:
         from easyocr import Reader
     except:
-        import utils as utl
+        import LCI.utils as utl
         utl.install_package('easyocr')
         #!pip install easyocr
         from easyocr import Reader

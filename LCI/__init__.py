@@ -1,5 +1,5 @@
-__version__ = "0.1.0"
-__author__ = 'Batman, Mujer Maravilla, Tito'
+__version__ = "0.0.1"
+__author__ = 'Laboratorio de ciencia de las imagenes - UNS'
 __credits__ = 'UNS - CONICET'
 
 # importen los paquetes necesarios para que las funciones funcionen

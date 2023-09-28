@@ -6,11 +6,7 @@ except:
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
-try:
-    from easyocr import Reader
-except:
-    !pip install easyocr
-    from easyocr import Reader
+
 
 def erase_txt(img, blur = True):
     """

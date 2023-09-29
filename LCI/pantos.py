@@ -218,6 +218,7 @@ class lci_db:
         from datetime import date
         import requests
         from  tqdm import tqdm
+        import os
 
         today = str(date.today()).replace('-','_')
         dst_folder = dst_folder+'/query_'+today+'/images/'

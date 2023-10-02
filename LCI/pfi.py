@@ -38,10 +38,15 @@ class ota_info():
             df = ota.ota2df_by_file("path/to/shapefile.shp", "cachorro")
         """
         
-        data_df_ = gpd.read_file(file_path)
         df_ = pd.DataFrame()
-        df_['x'] = data_df_.geometry.x
-        df_['y'] = data_df_.geometry.y
+        try:
+            data_df_ = gpd.read_file(file_path)
+            
+            df_['x'] = data_df_.geometry.x
+            df_['y'] = data_df_.geometry.y
+        except:
+            df_['x'] = []
+            df_['y'] = []
         df_['cls'] = cls
         return df_
 

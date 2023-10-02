@@ -53,7 +53,7 @@ First we have to make some function/s that have a filter rules and with the item
     def filt_by_combination(item):
         condition1 = item.to_dict()['annotator_name'] != ''
         condition2 = (len(item.to_dict()['retained'])>0)# == True
-        condition3 = item.to_dict()['tartar'] == True#item.to_dict()['annotator_name'] == 'choqueaaron@gmail.com'
+        condition3 = item.to_dict()['tartar'] == True#item.to_dict()['annotator_name'] == 'user@gmail.com'
         boolean = condition1 & condition2 #& condition3
         return boolean
 

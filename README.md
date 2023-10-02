@@ -85,3 +85,6 @@ For downloading the jsons files and the images files of a list of files filtered
     db.download_images(file_list, dst_folder)
 
 where dst_folder is a folder where two other directories will be created: "jsons" and "images". Also in dst_folder will be created a csv and a xlsx file with the information in the jsons we download.
+
+
+Test branches

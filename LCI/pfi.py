@@ -21,7 +21,7 @@ class ota_info():
         """
 
         self.path = folder_path
-        self.cats =  ['cachorro','macho_adulto','hembra_adulta','macho_subadulto','juvenil','indeterminado']
+        self.cats =  ['cachorro','macho-adulto','hembra-adulta','macho-subadulto','juvenil','indeterminado']
 
     def ota2df_by_file(self,file_path,cls):
         """

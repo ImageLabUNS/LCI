@@ -45,9 +45,9 @@ class ota_info():
             df_['x'] = data_df_.geometry.x
             df_['y'] = data_df_.geometry.y
         except:
-            df_['x'] = []
-            df_['y'] = []
-        df_['cls'] = [cls]
+            df_['x'] = [0]
+            df_['y'] = [0]
+        df_['cls'] = cls
         return df_
 
     def ota2df(self):

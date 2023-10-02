@@ -3,6 +3,7 @@ import geopandas as gpd
 import pandas as pd
 import plotly.graph_objects as go # https://plotly.com/python/
 from PIL import Image
+
 class ota_info():
     def __init__(self, folder_path):
         """
@@ -58,7 +59,7 @@ class ota_info():
             sh_list = gl(self.path+'*.shp')
         except:
             from glob import glob as gl
-            sh_list = gl(self.path+'*.shp')
+            sh_list = gl(self.path+'/*.shp')
 
         #classes = ['cachorro','macho_adulto','hembra_adulta','macho_subadulto','juvenil','indeterminado']
         df = pd.DataFrame()

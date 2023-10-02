@@ -44,10 +44,10 @@ class ota_info():
             
             df_['x'] = data_df_.geometry.x
             df_['y'] = data_df_.geometry.y
+            df_['cls'] = cls
         except:
-            df_['x'] = [0]
-            df_['y'] = [0]
-        df_['cls'] = cls
+            pass
+        
         return df_
 
     def ota2df(self):
@@ -74,8 +74,8 @@ class ota_info():
                 file_name = [fl for fl in sh_list if c in fl][0]
                 df = pd.concat([df,self.ota2df_by_file(file_name,c)],ignore_index = True)
             except:
-                df = pd.concat([df,pd.DataFrame({'x':[],'y':[],'cls':[c]})])
-                #pass
+                #df = pd.concat([df,pd.DataFrame({'x':[],'y':[],'cls':[c]})])
+                pass
                 #print('Error with file',file_name)
 
         return df

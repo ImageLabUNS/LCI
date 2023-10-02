@@ -115,7 +115,7 @@ class lci_db:
             list of str: A list of collection names.
 
         Example:
-            lci = lci_db("path/to/credentials.json")
+            lci = lci_db("path/to/credentials.json") \n
             collection_names = lci.collections()
         """
         self.collections = [collection.id for collection in self.db.collections()]
@@ -132,8 +132,8 @@ class lci_db:
             list: A list of combined results.
 
         Example:
-            lci = lci_db("path/to/credentials.json")
-            collection_name = "example_collection"
+            lci = lci_db("path/to/credentials.json") \n
+            collection_name = "example_collection" \n
             query_results = lci.raw_query(collection_name)
         """
         query = self.db.collection(collection_name)
@@ -152,8 +152,8 @@ class lci_db:
             list: A list of items that satisfy the filter condition.
 
         Example:
-            lci = lci_db("path/to/credentials.json")
-            # Define a filter function, e.g., lambda item: item['field'] == 'value'
+            lci = lci_db("path/to/credentials.json") \n
+            # Define a filter function, e.g., lambda item: item['field'] == 'value' \n
             filtered_data = lci.filt_query(func)
         """
         self.filtered_data = list(filter(lambda item: func(item), self.query_collection))
@@ -171,11 +171,11 @@ class lci_db:
             None
 
         Example:
-            lci = lci_db("path/to/credentials.json")
-            collection_list = lci.query_collection
-            collection_name = collection_list[0]
-            query_results = lci.raw_query(collection_name)
-            dst_folder = "path/to/destination_folder"
+            lci = lci_db("path/to/credentials.json") \n
+            collection_list = lci.query_collection \n
+            collection_name = collection_list[0] \n
+            query_results = lci.raw_query(collection_name) \n
+            dst_folder = "path/to/destination_folder" \n
             lci.download_json(query_results,dst_folder)
         """
         from datetime import date
@@ -209,11 +209,11 @@ class lci_db:
             None
 
         Example:
-            lci = lci_db("path/to/credentials.json")
-            collection_list = lci.query_collection
-            collection_name = collection_list[0]
-            query_results = lci.raw_query(collection_name)
-            dst_folder = "path/to/destination_folder"
+            lci = lci_db("path/to/credentials.json") \n
+            collection_list = lci.query_collection \n
+            collection_name = collection_list[0] \n
+            query_results = lci.raw_query(collection_name) \n
+            dst_folder = "path/to/destination_folder" \n
             lci.download_images(query_results,dst_folder)
             
         """
@@ -252,9 +252,9 @@ class lci_db:
             pandas.DataFrame: A DataFrame containing selected columns from the document data.
 
         Example:
-            lci = lci_db("path/to/credentials.json")
-            file_list = lci.query_collection
-            dataframe = lci.generate_csv(file_list)
+            lci = lci_db("path/to/credentials.json") \n
+            file_list = lci.query_collection \n
+            dataframe = lci.generate_csv(file_list) \n
         """
         import pandas as pd
 
@@ -293,11 +293,11 @@ class lci_db:
             None
 
         Example:
-            lci = lci_db("path/to/credentials.json")
-            collection_list = lci.query_collection
-            collection_name = collection_list[0]
-            query_results = lci.raw_query(collection_name)
-            dst_folder = "path/to/destination_folder"
+            lci = lci_db("path/to/credentials.json") \n
+            collection_list = lci.query_collection \n
+            collection_name = collection_list[0] \n
+            query_results = lci.raw_query(collection_name) \n
+            dst_folder = "path/to/destination_folder" \n
             lci.download_images_and_json(query_results,dst_folder)
         """
         import pandas as pd

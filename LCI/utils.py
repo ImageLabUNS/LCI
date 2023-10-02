@@ -1,8 +1,8 @@
 import shutil
 import os
-
-def say_hi(name):
-  print(f'Hi, {name}')
+from PIL import Image
+from io import BytesIO
+import base64
 
 def drive_colab():
   """
@@ -112,3 +112,47 @@ def install_package(package_name):
         except subprocess.CalledProcessError:
             print(f"Failed to install {package_name}. Please install it manually.")
 
+def decode_image(base64_image_data):
+    """
+    Decode a base64-encoded image data and return a PIL Image object.
+
+    Args:
+        base64_image_data (str): Base64-encoded image data.
+
+    Returns:
+        PIL.Image.Image: A PIL Image object.
+
+    Example:
+        image_data = "base64_encoded_image_data_here"\n
+        image = decode_image(image_data)
+    """
+    if base64_image_data:
+        image_bytes = base64.b64decode(base64_image_data)
+        image = Image.open(BytesIO(image_bytes))
+        return image
+
+def encode_image():
+    """
+    Encode an image as base64.
+
+    Args:
+        image_path (str): The path to the image file to be encoded.
+
+    Returns:
+        str: Base64-encoded image data.
+
+    Example:
+        image_path = "path/to/your_image.jpg"\n
+        base64_image_data = encode_image(image_path)
+    """
+    # Open the image using PIL
+    image = Image.open('your_image.jpg')  # Replace 'your_image.jpg' with the path to your image file
+
+    # Convert the image to a bytes-like object
+    image_bytes = image.tobytes()
+
+    # Encode the image bytes as base64
+    base64_image_data = base64.b64encode(image_bytes).decode('utf-8')
+
+    # Print or use the base64_image_data as needed
+    return(base64_image_data)

@@ -4,8 +4,8 @@ __credits__ = 'UNS - CONICET'
 
 # importen los paquetes necesarios para que las funciones funcionen
 
-import pantos
-import utils
+import LCI.pantos
+import LCI.utils
 
 
 

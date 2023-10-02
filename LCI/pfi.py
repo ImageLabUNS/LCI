@@ -47,7 +47,7 @@ class ota_info():
         except:
             df_['x'] = []
             df_['y'] = []
-        df_['cls'] = cls
+        df_['cls'] = [cls]
         return df_
 
     def ota2df(self):

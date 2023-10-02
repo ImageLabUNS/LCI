@@ -193,7 +193,7 @@
 <span class="sd">            list of str: A list of collection names.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
 <span class="sd">            collection_names = lci.collections()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">collections</span> <span class="o">=</span> <span class="p">[</span><span class="n">collection</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">collections</span><span class="p">()]</span>
@@ -213,8 +213,8 @@
 <span class="sd">            list: A list of combined results.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
-<span class="sd">            collection_name = &quot;example_collection&quot;</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
+<span class="sd">            collection_name = &quot;example_collection&quot; \n</span>
 <span class="sd">            query_results = lci.raw_query(collection_name)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">)</span>
@@ -236,8 +236,8 @@
 <span class="sd">            list: A list of items that satisfy the filter condition.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
-<span class="sd">            # Define a filter function, e.g., lambda item: item[&#39;field&#39;] == &#39;value&#39;</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
+<span class="sd">            # Define a filter function, e.g., lambda item: item[&#39;field&#39;] == &#39;value&#39; \n</span>
 <span class="sd">            filtered_data = lci.filt_query(func)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filtered_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">func</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_collection</span><span class="p">))</span>
@@ -258,11 +258,11 @@
 <span class="sd">            None</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
-<span class="sd">            collection_list = lci.query_collection</span>
-<span class="sd">            collection_name = collection_list[0]</span>
-<span class="sd">            query_results = lci.raw_query(collection_name)</span>
-<span class="sd">            dst_folder = &quot;path/to/destination_folder&quot;</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
+<span class="sd">            collection_list = lci.query_collection \n</span>
+<span class="sd">            collection_name = collection_list[0] \n</span>
+<span class="sd">            query_results = lci.raw_query(collection_name) \n</span>
+<span class="sd">            dst_folder = &quot;path/to/destination_folder&quot; \n</span>
 <span class="sd">            lci.download_json(query_results,dst_folder)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
@@ -299,11 +299,11 @@
 <span class="sd">            None</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
-<span class="sd">            collection_list = lci.query_collection</span>
-<span class="sd">            collection_name = collection_list[0]</span>
-<span class="sd">            query_results = lci.raw_query(collection_name)</span>
-<span class="sd">            dst_folder = &quot;path/to/destination_folder&quot;</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
+<span class="sd">            collection_list = lci.query_collection \n</span>
+<span class="sd">            collection_name = collection_list[0] \n</span>
+<span class="sd">            query_results = lci.raw_query(collection_name) \n</span>
+<span class="sd">            dst_folder = &quot;path/to/destination_folder&quot; \n</span>
 <span class="sd">            lci.download_images(query_results,dst_folder)</span>
 <span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -345,9 +345,9 @@
 <span class="sd">            pandas.DataFrame: A DataFrame containing selected columns from the document data.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
-<span class="sd">            file_list = lci.query_collection</span>
-<span class="sd">            dataframe = lci.generate_csv(file_list)</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
+<span class="sd">            file_list = lci.query_collection \n</span>
+<span class="sd">            dataframe = lci.generate_csv(file_list) \n</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -389,11 +389,11 @@
 <span class="sd">            None</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;)</span>
-<span class="sd">            collection_list = lci.query_collection</span>
-<span class="sd">            collection_name = collection_list[0]</span>
-<span class="sd">            query_results = lci.raw_query(collection_name)</span>
-<span class="sd">            dst_folder = &quot;path/to/destination_folder&quot;</span>
+<span class="sd">            lci = lci_db(&quot;path/to/credentials.json&quot;) \n</span>
+<span class="sd">            collection_list = lci.query_collection \n</span>
+<span class="sd">            collection_name = collection_list[0] \n</span>
+<span class="sd">            query_results = lci.raw_query(collection_name) \n</span>
+<span class="sd">            dst_folder = &quot;path/to/destination_folder&quot; \n</span>
 <span class="sd">            lci.download_images_and_json(query_results,dst_folder)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>

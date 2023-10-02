@@ -71,12 +71,9 @@
   <h1>Source code for LCI.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">os</span>
-
-<div class="viewcode-block" id="say_hi">
-<a class="viewcode-back" href="../../LCI.html#LCI.utils.say_hi">[docs]</a>
-<span class="k">def</span> <span class="nf">say_hi</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hi, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
-
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="nn">base64</span>
 
 <div class="viewcode-block" id="drive_colab">
 <a class="viewcode-back" href="../../LCI.html#LCI.utils.drive_colab">[docs]</a>
@@ -197,6 +194,56 @@
         <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to install </span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">. Please install it manually.&quot;</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="decode_image">
+<a class="viewcode-back" href="../../LCI.html#LCI.utils.decode_image">[docs]</a>
+<span class="k">def</span> <span class="nf">decode_image</span><span class="p">(</span><span class="n">base64_image_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode a base64-encoded image data and return a PIL Image object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        base64_image_data (str): Base64-encoded image data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        PIL.Image.Image: A PIL Image object.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        image_data = &quot;base64_encoded_image_data_here&quot;\n</span>
+<span class="sd">        image = decode_image(image_data)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">base64_image_data</span><span class="p">:</span>
+        <span class="n">image_bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_image_data</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">image</span></div>
+
+
+<div class="viewcode-block" id="encode_image">
+<a class="viewcode-back" href="../../LCI.html#LCI.utils.encode_image">[docs]</a>
+<span class="k">def</span> <span class="nf">encode_image</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode an image as base64.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        image_path (str): The path to the image file to be encoded.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Base64-encoded image data.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        image_path = &quot;path/to/your_image.jpg&quot;\n</span>
+<span class="sd">        base64_image_data = encode_image(image_path)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Open the image using PIL</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;your_image.jpg&#39;</span><span class="p">)</span>  <span class="c1"># Replace &#39;your_image.jpg&#39; with the path to your image file</span>
+
+    <span class="c1"># Convert the image to a bytes-like object</span>
+    <span class="n">image_bytes</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+
+    <span class="c1"># Encode the image bytes as base64</span>
+    <span class="n">base64_image_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Print or use the base64_image_data as needed</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">base64_image_data</span><span class="p">)</span></div>
 
 </pre></div>
 

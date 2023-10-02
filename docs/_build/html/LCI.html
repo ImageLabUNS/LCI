@@ -53,10 +53,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-LCI.utils">LCI.utils module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#LCI.utils.copy_file"><code class="docutils literal notranslate"><span class="pre">copy_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#LCI.utils.decode_image"><code class="docutils literal notranslate"><span class="pre">decode_image()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#LCI.utils.drive_colab"><code class="docutils literal notranslate"><span class="pre">drive_colab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#LCI.utils.encode_image"><code class="docutils literal notranslate"><span class="pre">encode_image()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#LCI.utils.install_package"><code class="docutils literal notranslate"><span class="pre">install_package()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#LCI.utils.move_file"><code class="docutils literal notranslate"><span class="pre">move_file()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#LCI.utils.say_hi"><code class="docutils literal notranslate"><span class="pre">say_hi()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-LCI">Module contents</a></li>
@@ -142,8 +143,8 @@ processed_img = proc_img(img, blur=True)</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-collection_names = lci.collections()</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p>collection_names = lci.collections()</p>
 </dd></dl>
 
 <dl class="py method">
@@ -162,12 +163,12 @@ collection_names = lci.collections()</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-collection_list = lci.query_collection
-collection_name = collection_list[0]
-query_results = lci.raw_query(collection_name)
-dst_folder = “path/to/destination_folder”
-lci.download_images(query_results,dst_folder)</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p>collection_list = lci.query_collection</p>
+<p>collection_name = collection_list[0]</p>
+<p>query_results = lci.raw_query(collection_name)</p>
+<p>dst_folder = “path/to/destination_folder”</p>
+<p>lci.download_images(query_results,dst_folder)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -187,12 +188,12 @@ Also save a csv and xlsx file with the info from each file.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-collection_list = lci.query_collection
-collection_name = collection_list[0]
-query_results = lci.raw_query(collection_name)
-dst_folder = “path/to/destination_folder”
-lci.download_images_and_json(query_results,dst_folder)</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p>collection_list = lci.query_collection</p>
+<p>collection_name = collection_list[0]</p>
+<p>query_results = lci.raw_query(collection_name)</p>
+<p>dst_folder = “path/to/destination_folder”</p>
+<p>lci.download_images_and_json(query_results,dst_folder)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -211,12 +212,12 @@ lci.download_images_and_json(query_results,dst_folder)</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-collection_list = lci.query_collection
-collection_name = collection_list[0]
-query_results = lci.raw_query(collection_name)
-dst_folder = “path/to/destination_folder”
-lci.download_json(query_results,dst_folder)</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p>collection_list = lci.query_collection</p>
+<p>collection_name = collection_list[0]</p>
+<p>query_results = lci.raw_query(collection_name)</p>
+<p>dst_folder = “path/to/destination_folder”</p>
+<p>lci.download_json(query_results,dst_folder)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -235,9 +236,9 @@ lci.download_json(query_results,dst_folder)</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-# Define a filter function, e.g., lambda item: item[‘field’] == ‘value’
-filtered_data = lci.filt_query(func)</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p># Define a filter function, e.g., lambda item: item[‘field’] == ‘value’</p>
+<p>filtered_data = lci.filt_query(func)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -256,9 +257,9 @@ filtered_data = lci.filt_query(func)</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-file_list = lci.query_collection
-dataframe = lci.generate_csv(file_list)</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p>file_list = lci.query_collection</p>
+<p>dataframe = lci.generate_csv(file_list)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -277,9 +278,9 @@ dataframe = lci.generate_csv(file_list)</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>lci = lci_db(“path/to/credentials.json”)
-collection_name = “example_collection”
-query_results = lci.raw_query(collection_name)</p>
+<p>lci = lci_db(“path/to/credentials.json”)</p>
+<p>collection_name = “example_collection”</p>
+<p>query_results = lci.raw_query(collection_name)</p>
 </dd></dl>
 
 </dd></dl>
@@ -317,6 +318,26 @@ query_results = lci.raw_query(collection_name)</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="LCI.utils.decode_image">
+<span class="sig-prename descclassname"><span class="pre">LCI.utils.</span></span><span class="sig-name descname"><span class="pre">decode_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64_image_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/LCI/utils.html#decode_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LCI.utils.decode_image" title="Link to this definition"></a></dt>
+<dd><p>Decode a base64-encoded image data and return a PIL Image object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>base64_image_data</strong> (<em>str</em>) – Base64-encoded image data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A PIL Image object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PIL.Image.Image</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>image_data = “base64_encoded_image_data_here”</p>
+<p>image = decode_image(image_data)</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="LCI.utils.drive_colab">
 <span class="sig-prename descclassname"><span class="pre">LCI.utils.</span></span><span class="sig-name descname"><span class="pre">drive_colab</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/LCI/utils.html#drive_colab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LCI.utils.drive_colab" title="Link to this definition"></a></dt>
 <dd><p>Mount Google Drive in a Google Colab environment and set up authentication.</p>
@@ -332,6 +353,26 @@ and sets up authentication to access Google Drive using PyDrive.</p>
 </dl>
 <p class="rubric">Example</p>
 <p>drive_colab()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="LCI.utils.encode_image">
+<span class="sig-prename descclassname"><span class="pre">LCI.utils.</span></span><span class="sig-name descname"><span class="pre">encode_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/LCI/utils.html#encode_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LCI.utils.encode_image" title="Link to this definition"></a></dt>
+<dd><p>Encode an image as base64.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image_path</strong> (<em>str</em>) – The path to the image file to be encoded.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Base64-encoded image data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>image_path = “path/to/your_image.jpg”</p>
+<p>base64_image_data = encode_image(image_path)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -373,11 +414,6 @@ the user to install the package manually.</p>
 <p class="rubric">Example</p>
 <p>move_file(“/source_directory/example.txt”, “/destination_directory/”)</p>
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="LCI.utils.say_hi">
-<span class="sig-prename descclassname"><span class="pre">LCI.utils.</span></span><span class="sig-name descname"><span class="pre">say_hi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/LCI/utils.html#say_hi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LCI.utils.say_hi" title="Link to this definition"></a></dt>
-<dd></dd></dl>
 
 </section>
 <section id="module-LCI">

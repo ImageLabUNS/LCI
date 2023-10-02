@@ -69,11 +69,13 @@ class ota_info():
         #classes = ['cachorro','macho_adulto','hembra_adulta','macho_subadulto','juvenil','indeterminado']
         df = pd.DataFrame()
         for c in self.cats:
-            file_name = [fl for fl in sh_list if c in fl][0]
+            
             try:
+                file_name = [fl for fl in sh_list if c in fl][0]
                 df = pd.concat([df,self.ota2df_by_file(file_name,c)],ignore_index = True)
             except:
-                pass
+                df = pd.concat([df,pd.DataFrame({'x':[],'y':[],'cls':[c]})])
+                #pass
                 #print('Error with file',file_name)
 
         return df

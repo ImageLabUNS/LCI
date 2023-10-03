@@ -102,9 +102,9 @@ class ota_info():
         """
         category_colors = {
                         'cachorro': 'rgba(255, 0, 0, 255)',        # Red
-                        'macho_adulto': 'rgba(0, 255, 0, 255)',  # Green
-                        'hembra_adulta': 'rgba(0, 0, 255, 255)',  # Blue
-                        'macho_subadulto': 'rgba(255, 255, 0, 255)',  # Yellow
+                        'macho-adulto': 'rgba(0, 255, 0, 255)',  # Green
+                        'hembra-adulta': 'rgba(0, 0, 255, 255)',  # Blue
+                        'macho-subadulto': 'rgba(255, 255, 0, 255)',  # Yellow
                         'juvenil': 'rgba(128, 0, 128, 255)',     # Purple
                         'indeterminado': 'rgba(0, 128, 128, 255)'  # Teal
                     }

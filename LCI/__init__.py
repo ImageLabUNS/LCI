@@ -10,7 +10,10 @@ import LCI.pfi
 
 
 from glob import glob as gl # This list paths
-import geopandas as gpd
+try:
+    import geopandas as gpd
+except:
+    LCI.utils.install_package(geopandas)
 import pandas as pd
 import plotly.graph_objects as go # https://plotly.com/python/
 from PIL import Image

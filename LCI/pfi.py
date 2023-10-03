@@ -112,7 +112,7 @@ class ota_info():
             image_path = gl(self.path+'*[.png,.jpg]')[0]
         except:
             from glob import glob as gl
-            image_path = gl(self.path+'*[.png,.jpg]')[0]
+            image_path = gl(self.path+'*.jpg')[0]+gl(self.path+'*.png')[0]
         image = Image.open(image_path)
         img_width, img_height = image.size
 

@@ -12,6 +12,14 @@ LCI.pantos module
    :undoc-members:
    :show-inheritance:
 
+LCI.pfi module
+--------------
+
+.. automodule:: LCI.pfi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 LCI.utils module
 ----------------
 

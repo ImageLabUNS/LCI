@@ -3,6 +3,14 @@ try:
     from google.colab.patches import cv2_imshow
 except:
     pass
+
+try:
+    from easyocr import Reader
+except:
+    import LCI.utils as utl
+    utl.install_package('easyocr')
+    #!pip install easyocr
+    from easyocr import Reader
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
@@ -367,8 +375,10 @@ def cut_tooth(img, pol_vert):
     Returns:
         cv2 image: The image of the tooth with some blur.
 
+    Notes:
+        if you are in Colab import  the following: from google.colab.patches import cv2_imshow
     Example:
-        blurred_tooth = cut_tooth(image, polygon_vertices)
+        tooth = cut_tooth(image, polygon_vertices)
     """
     polygon_vertices = np.array(pol_vert, dtype=np.int32)
     x, y, w, h = cv2.boundingRect(polygon_vertices)

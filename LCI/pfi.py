@@ -3,7 +3,12 @@ import geopandas as gpd
 import pandas as pd
 import plotly.graph_objects as go # https://plotly.com/python/
 from PIL import Image
-import ipywidgets as widgets
+try:
+    import ipywidgets as widgets
+except:
+    import LCI.utils as utl
+    utl.install_package('ipywidgets')
+    import ipywidgets as widgets
 from IPython.display import display
 
 class ota_info():

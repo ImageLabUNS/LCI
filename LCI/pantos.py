@@ -8,6 +8,14 @@ import numpy as np
 from tqdm import tqdm
 import os
 
+import json
+import base64
+from PIL import Image
+from io import BytesIO
+import requests
+import numpy as np
+import cv2
+
 
 
 def erase_txt(image, blur = True):
@@ -309,3 +317,65 @@ class lci_db:
         df = self.generate_csv(file_list)
         df.to_csv(dst_folder+'/query_subset_results_'+today+'.csv')
         df.to_excel(dst_folder+'/query_subset_results_'+today+'.xlsx')
+
+
+def get_image(json_url):
+    """
+    Recover an image as a PIL Image and JSON data from a given URL.
+
+    Args:
+        json_url (str): The URL of the JSON file containing image data.
+
+    Returns:
+        PIL.Image.Image: A PIL Image object.
+        dict: JSON data retrieved from the URL.
+
+    Notes:
+        - In Colab, you can display the image by writing the variable name where the image is. In other IDEs, use `image.show()`.
+
+    Example:
+        image, data = get_image("https://example.com/image.json")
+    """
+    try:
+        response = requests.get(json_url)
+        response.raise_for_status()  # Check for any HTTP errors
+
+        # Parse the JSON content
+        data = response.json()
+
+        # Now you can work with the JSON data
+        # print(json_data)
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
+    except ValueError as e:
+        print(f"Failed to parse JSON: {e}")
+
+    base64_image_data = data.get("imageData")
+    if base64_image_data:
+        image_bytes = base64.b64decode(base64_image_data)
+        image = Image.open(BytesIO(image_bytes))
+    return image, data
+
+def cut_tooth(img, pol_vert):
+    """
+    Cut a tooth image using the given polygon vertices.
+
+    Args:
+        img (PIL.Image.Image): The original tooth image as a PIL Image.
+        pol_vert (list): The polygon vertices that delimit the tooth.
+
+    Returns:
+        cv2 image: The image of the tooth with some blur.
+
+    Example:
+        blurred_tooth = cut_tooth(image, polygon_vertices)
+    """
+    polygon_vertices = np.array(pol_vert, dtype=np.int32)
+    x, y, w, h = cv2.boundingRect(polygon_vertices)
+
+    opencv_image = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    mask = np.zeros_like(opencv_image)  # Create a black mask with the same size as the image
+    cv2.fillPoly(mask, [polygon_vertices], (255, 255, 255))  # Fill the polygon with white color (255,255,255)
+    result = cv2.bitwise_and(opencv_image, mask)
+
+    return result[y:y + h, x:x + w]

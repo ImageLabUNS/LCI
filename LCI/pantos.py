@@ -43,7 +43,7 @@ def erase_txt(image, blur = True):
         numpy.ndarray: The processed image.
 
     Example:
-        img = cv2.imread("image.jpg")
+        img = cv2.imread("image.jpg") \n
         processed_img = proc_img(img, blur=True)
     """
     try:
@@ -373,7 +373,7 @@ def cut_tooth(img, pol_vert):
         pol_vert (list): The polygon vertices that delimit the tooth.
 
     Returns:
-        cv2 image: The image of the tooth with some blur.
+        cv2 image: The image of the tooth.
 
     Notes:
         if you are in Colab import  the following: from google.colab.patches import cv2_imshow

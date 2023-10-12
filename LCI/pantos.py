@@ -1,16 +1,9 @@
-import cv2
 try:
     from google.colab.patches import cv2_imshow
 except:
     pass
 
-try:
-    from easyocr import Reader
-except:
-    import LCI.utils as utl
-    utl.install_package('easyocr')
-    #!pip install easyocr
-    from easyocr import Reader
+
 import pandas as pd
 import numpy as np
 from tqdm import tqdm

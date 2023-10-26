@@ -158,6 +158,18 @@ def encode_image():
     return(base64_image_data)
 
 def get_metadata(img_path):
+     """
+    Extract the metadata of an image at the specified path.
+
+    Args:
+        image_path (str): The path to the image file.
+
+    Returns:
+        dict: A dictionary containing the image metadata.
+
+    Example:
+        metadata = get_metadata("path/to/image.jpg")
+    """
     metadata = {}
     with open(image_path, 'rb') as f:
         # Return Exif tags

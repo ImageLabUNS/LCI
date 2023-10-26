@@ -158,7 +158,7 @@ def encode_image():
     return(base64_image_data)
 
 def get_metadata(img_path):
-     """
+    """
     Extract the metadata of an image at the specified path.
 
     Args:

@@ -4,6 +4,8 @@ from PIL import Image
 from io import BytesIO
 import base64
 
+
+
 def drive_colab():
   """
     Mount Google Drive in a Google Colab environment and set up authentication.
@@ -170,6 +172,8 @@ def get_metadata(img_path):
     Example:
         metadata = get_metadata("path/to/image.jpg")
     """
+    install_package(exifread)
+    import exifread
     metadata = {}
     with open(img_path, 'rb') as f:
         # Return Exif tags

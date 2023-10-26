@@ -156,3 +156,13 @@ def encode_image():
 
     # Print or use the base64_image_data as needed
     return(base64_image_data)
+
+def get_metadata(img_path):
+    metadata = {}
+    with open(image_path, 'rb') as f:
+        # Return Exif tags
+        tags = exifread.process_file(f)
+        for tag in tags.keys():
+            metadata[tag] = str(tags[tag])
+            #print(tag, tags[tag])
+    return metadata

@@ -171,7 +171,7 @@ def get_metadata(img_path):
         metadata = get_metadata("path/to/image.jpg")
     """
     metadata = {}
-    with open(image_path, 'rb') as f:
+    with open(img_path, 'rb') as f:
         # Return Exif tags
         tags = exifread.process_file(f)
         for tag in tags.keys():

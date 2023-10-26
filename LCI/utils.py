@@ -172,7 +172,7 @@ def get_metadata(img_path):
     Example:
         metadata = get_metadata("path/to/image.jpg")
     """
-    install_package(exifread)
+    install_package('exifread')
     import exifread
     metadata = {}
     with open(img_path, 'rb') as f:

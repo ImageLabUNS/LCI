@@ -281,18 +281,21 @@ class lci_db:
         col_names = col_names_1+col_names_2+col_names_3
         df = pd.DataFrame()
         for f in file_list:
-            data = f.to_dict()
-            df_temp = pd.DataFrame()
-            for c in col_names:
-                df_temp[c] = [data[c]]
-                if c in ['date','push_date','pull_date','last_download_date']:
-                    try:
-                        df_temp[c] = df_temp[c].dt.tz_localize(None)
-                        df_temp[c] = pd.to_datetime(df_temp[c][0]).date()
-                    except:
-                        pass
+            try:
+                data = f.to_dict()
+                df_temp = pd.DataFrame()
+                for c in col_names:
+                    df_temp[c] = [data[c]]
+                    if c in ['date','push_date','pull_date','last_download_date']:
+                        try:
+                            df_temp[c] = df_temp[c].dt.tz_localize(None)
+                            df_temp[c] = pd.to_datetime(df_temp[c][0]).date()
+                        except:
+                            pass
                 
-            df = pd.concat([df,df_temp], ignore_index = True)
+                df = pd.concat([df,df_temp], ignore_index = True)
+            except:
+                pass
         return df
 
     def download_images_and_json(self,file_list,dst_folder):

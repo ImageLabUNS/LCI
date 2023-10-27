@@ -198,13 +198,16 @@ class lci_db:
 
         print('Downloading jsons:')
         for f in tqdm(file_list):
-            url = f.to_dict()['json_url']
-            json_name = f.to_dict()['json_filename']
-            response = requests.get(url)
-            response.raise_for_status()
-            save_path = dst_folder +  json_name
-            with open(save_path, "wb") as archivo:
-                archivo.write(response.content)
+            try:
+                url = f.to_dict()['json_url']
+                json_name = f.to_dict()['json_filename']
+                response = requests.get(url)
+                response.raise_for_status()
+                save_path = dst_folder +  json_name
+                with open(save_path, "wb") as archivo:
+                    archivo.write(response.content)
+            except:
+                print('A json has no json_url.', f.to_dict())
 
     def download_images(self, file_list, dst_folder):
         """

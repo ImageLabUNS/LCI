@@ -182,3 +182,5 @@ def get_metadata(img_path):
             metadata[tag] = str(tags[tag])
             #print(tag, tags[tag])
     return metadata
+
+.

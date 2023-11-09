@@ -197,3 +197,43 @@ class ota_info():
         display(multiple_choice)
         #fig.show()
         #return fig
+def get_photoplace(img_path,gps_data_path):
+    """
+    Get the GPS data from a trip corresponding to the time and date when the photo was taken.
+
+    Args:
+        img_path (str): The path to the image file.
+        gps_data_path (str): The path to the GPS data file from the trip.
+
+    Returns:
+        pandas.DataFrame: A DataFrame containing the GPS data when the photo was taken.
+
+    Example:
+        gps_data = get_photoplace('photo.jpg', 'gps_data.csv')
+    """
+    meta = utl.get_metadata(image_path)
+    photo_date = meta['EXIF DateTimeOriginal']
+    date,hour = photo_date.split(' ')
+    photo_newdate = date.replace(':','-')+' '+hour
+    #Convierto la hora de la imagen para no tener que convertir la hora de todo un csv
+    # Define the initial datetime
+    initial_datetime = datetime.strptime(photo_newdate, '%Y-%m-%d %H:%M:%S')
+
+    # Define the initial timezone
+    initial_timezone = pytz.timezone('Etc/GMT')
+
+    # Define the target timezone
+    target_timezone = pytz.timezone('Etc/GMT-3')
+
+    # Localize the initial datetime to the initial timezone
+    localized_datetime = initial_timezone.localize(initial_datetime)
+
+    # Convert the localized datetime to the target timezone
+    target_datetime = localized_datetime.astimezone(target_timezone)
+    photo_newdate3 = str(target_datetime)[:-6]
+    # Print the converted datetime
+    
+
+    df = pd.read_csv(gps_data_path)
+    aux_df = df[df['date time'] == photo_newdate3].copy()
+    return aux_df

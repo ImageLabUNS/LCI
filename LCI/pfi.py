@@ -12,6 +12,7 @@ except:
 from IPython.display import display
 from datetime import datetime
 import pytz
+import LCI.utils as utl
 
 class ota_info():
     def __init__(self, folder_path):

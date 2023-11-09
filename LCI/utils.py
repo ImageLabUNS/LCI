@@ -183,4 +183,3 @@ def get_metadata(img_path):
             #print(tag, tags[tag])
     return metadata
 
-.

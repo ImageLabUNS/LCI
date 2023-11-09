@@ -214,7 +214,7 @@ def get_photoplace(img_path,gps_data_path):
     Example:
         gps_data = get_photoplace('photo.jpg', 'gps_data.csv')
     """
-    meta = utl.get_metadata(image_path)
+    meta = utl.get_metadata(img_path)
     photo_date = meta['EXIF DateTimeOriginal']
     date,hour = photo_date.split(' ')
     photo_newdate = date.replace(':','-')+' '+hour

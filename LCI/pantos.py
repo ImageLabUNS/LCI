@@ -19,6 +19,32 @@ import cv2
 
 
 
+def get_panto(db_file):
+    """
+    Retrieve and parse a JSON file from the specified URL in the given database file.
+
+    Args:
+        db_file: A database file containing information, including a 'json_url' field.
+
+    Returns:
+        dict: The parsed JSON data.
+
+    Example:
+        json_data = get_panto(database_file)
+    """
+    try:
+        # Get the JSON URL from the database file
+        url = db_file.to_dict()['json_url']
+
+        # Retrieve and parse the JSON data
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+
+    except Exception as e:
+        print(f'An error occurred: {e}. Details: {db_file.to_dict()}')
+
+
 def erase_txt(image, blur = True):
     """
     Process an image by either blurring or covering text regions with black rectangles.

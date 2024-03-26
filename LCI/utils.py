@@ -202,15 +202,15 @@ def unzip_files(origin_path,dest_path):
   
   # Create directory if it doesn't exist
 
-  os.makedirs(extract_to_dir, exist_ok=True)
+  os.makedirs(dest_path, exist_ok=True)
  
 
 
   # Open the zip file
-  with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+  with zipfile.ZipFile(origin_path, 'r') as zip_ref:
       # Extract all contents to the specified directory
-      zip_ref.extractall(extract_to_dir)
+      zip_ref.extractall(dest_path)
 
   # List the extracted files
-  extracted_files = os.listdir(extract_to_dir)
+  extracted_files = os.listdir(dest_path)
   print("Files extracted successfully:")

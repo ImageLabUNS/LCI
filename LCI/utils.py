@@ -183,3 +183,33 @@ def get_metadata(img_path):
             #print(tag, tags[tag])
     return metadata
 
+def unzip_files(origin_path,dest_path):
+  """
+    Unzip files from a specified origin path to a destination directory.
+
+    Args:
+        origin_path (str): Path to the zip file to be extracted.
+        dest_path (str): Path to the directory where contents will be extracted.
+
+    Returns:
+        None: Extracts files from the zip archive to the specified directory.
+
+    Example:
+        unzip_files("path/to/zip_file.zip", "path/to/destination")
+    """
+  import zipfile
+  import os
+  # Create directory if it doesn't exist
+
+  os.makedirs(extract_to_dir, exist_ok=True)
+ 
+
+
+  # Open the zip file
+  with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+      # Extract all contents to the specified directory
+      zip_ref.extractall(extract_to_dir)
+
+  # List the extracted files
+  extracted_files = os.listdir(extract_to_dir)
+  print("Files extracted successfully:")

@@ -3,6 +3,7 @@ import os
 from PIL import Image
 from io import BytesIO
 import base64
+import zipfile
 
 
 
@@ -197,8 +198,8 @@ def unzip_files(origin_path,dest_path):
     Example:
         unzip_files("path/to/zip_file.zip", "path/to/destination")
     """
-  import zipfile
-  import os
+  
+  
   # Create directory if it doesn't exist
 
   os.makedirs(extract_to_dir, exist_ok=True)

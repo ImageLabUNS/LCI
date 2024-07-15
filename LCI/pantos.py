@@ -311,7 +311,10 @@ class lci_db:
                 data = f.to_dict()
                 df_temp = pd.DataFrame()
                 for c in col_names:
-                    df_temp[c] = [data[c]]
+                    try:
+                        df_temp[c] = [data[c]]
+                    except:
+                        df_temp[c] = []
                     if c in ['date','push_date','pull_date','last_download_date']:
                         try:
                             df_temp[c] = df_temp[c].dt.tz_localize(None)

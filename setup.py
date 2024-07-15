@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='LCI', # 
-    version='0.0.1',    
+    version='0.0.2',    
     description='This is a package of the LCI',
     url='https://github.com/ImageLabUNS/LCI',
     author='Laboratorio de ciencia de las imagenes - UNS',

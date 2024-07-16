@@ -314,7 +314,7 @@ class lci_db:
                     try:
                         df_temp[c] = [data[c]]
                     except:
-                        df_temp[c] = []
+                        df_temp[c] = ''
                     if c in ['date','push_date','pull_date','last_download_date']:
                         try:
                             df_temp[c] = df_temp[c].dt.tz_localize(None)

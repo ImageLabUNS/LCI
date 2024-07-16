@@ -307,7 +307,7 @@ class lci_db:
         col_names = col_names_1+col_names_2+col_names_3
         df = pd.DataFrame()
         for f in file_list:
-            try:
+            
                 data = f.to_dict()
                 df_temp = pd.DataFrame()
                 for c in col_names:
@@ -323,8 +323,7 @@ class lci_db:
                             pass
                 
                 df = pd.concat([df,df_temp], ignore_index = True)
-            except:
-                pass
+            
         return df
 
     def download_images_and_json(self,file_list,dst_folder):

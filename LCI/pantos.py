@@ -353,8 +353,8 @@ class lci_db:
         self.download_images(file_list,dst_folder)
         self.download_jsons(file_list,dst_folder)
         df = self.generate_csv(file_list)
-        df.to_csv(dst_folder+'/query_subset_results_'+today+'.csv')
-        df.to_excel(dst_folder+'/query_subset_results_'+today+'.xlsx')
+        df.to_csv(dst_folder+'/query_subset_results_'+today+'.csv', ignore_index = True)
+        df.to_excel(dst_folder+'/query_subset_results_'+today+'.xlsx', ignore_index = True)
 
 
 def get_image(json_url):
